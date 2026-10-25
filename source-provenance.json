@@ -1,0 +1,107 @@
+{
+  "sourceRepository": "wrongstory/room-management-system-backend",
+  "sourceCommit": "e400e08d91704bec43ad0ae256ced6be89b69162",
+  "destinationRepository": "yeosucastletheart-cyber/reservation-backup",
+  "destinationRepositoryId": 1432846595,
+  "appSlug": "castle-reservation-backup",
+  "dateKst": "2026-10-25",
+  "files": [
+    {
+      "path": "scripts/reservation-backup.ts",
+      "sourceSha256": "847927d8cfff266744b78f97350c5d791419a63c6d7d53c606556973e9c290f3",
+      "sameContentIgnoringLineEndings": true
+    },
+    {
+      "path": "scripts/reservation-backup-alert.mjs",
+      "sourceSha256": "bd11a9c62e99f6e08cef0be66a73461b741a89b2f4d43760258e00cd675dc815",
+      "sameContentIgnoringLineEndings": false
+    },
+    {
+      "path": "scripts/lib/reservation-backup.ts",
+      "sourceSha256": "40bd4e1bfe6b0155c77f9e1707a61a2fd569acd81651c8515df38687ff842a44",
+      "sameContentIgnoringLineEndings": true
+    },
+    {
+      "path": "scripts/lib/reservation-backup-source.ts",
+      "sourceSha256": "2459c7a1a6b17286b3a5b633fda1d3b9f96c80d7f863c87441b35b875046420a",
+      "sameContentIgnoringLineEndings": true
+    },
+    {
+      "path": "scripts/lib/reservation-backup-storage.ts",
+      "sourceSha256": "00b31789c7da1dd942a128cb202aad978c04cd7a9b8d51c6e558e219932e5e36",
+      "sameContentIgnoringLineEndings": true
+    },
+    {
+      "path": "supabase/functions/_shared/reservation-backup-monitor.ts",
+      "sourceSha256": "93c39cfc3f08797e730dfc04ac11ad63b8ae20791b5a72e526a2790124a778f7",
+      "sameContentIgnoringLineEndings": false
+    },
+    {
+      "path": "supabase/functions/_shared/reservation-backup-alert.ts",
+      "sourceSha256": "e7969486aa3084c77523c9a1d847de0e00765266e97499f7ec7a712264f1cf72",
+      "sameContentIgnoringLineEndings": false
+    },
+    {
+      "path": "supabase/functions/_shared/reservation-backup-github-app.ts",
+      "sourceSha256": "73c40ae1cab79618ad48efa3095834fc65b03c724331582906ea375d0f8bacdf",
+      "sameContentIgnoringLineEndings": false
+    },
+    {
+      "path": "supabase/functions/_shared/scheduled-invocation.ts",
+      "sourceSha256": "9809ea051af718fa8284f68c3b5bb63ed3b2449e604d17a569f74a69f1e3619b",
+      "sameContentIgnoringLineEndings": true
+    },
+    {
+      "path": "supabase/functions/reservation-backup-monitor/index.ts",
+      "sourceSha256": "aca2489f8aaa5d14e11e302cbaa3c0d01ef148ffcf1f57eddd9c051f70dbc761",
+      "sameContentIgnoringLineEndings": true
+    },
+    {
+      "path": "supabase/functions/reservation-backup-monitor/index.deno.ts",
+      "sourceSha256": "d28adac479d777b78168e84b3bafb195be27232114d2966461d224387069ec55",
+      "sameContentIgnoringLineEndings": true
+    },
+    {
+      "path": "tests/reservation-backup.test.ts",
+      "sourceSha256": "e5e847fbb48d1ed876380b79505cdd2e41ee92793e01de70767bf911d6a2e301",
+      "sameContentIgnoringLineEndings": true
+    },
+    {
+      "path": "tests/reservation-backup-source.test.ts",
+      "sourceSha256": "37cc9ad8c2d7c87a593e7afb4197a207f7674ebea825d4f50f79be5fe502b790",
+      "sameContentIgnoringLineEndings": true
+    },
+    {
+      "path": "tests/reservation-backup-monitor.test.ts",
+      "sourceSha256": "09e177ce732952595d4e844c41dc3dc0954f44eccee48416764b12c6b097c6a8",
+      "sameContentIgnoringLineEndings": false
+    },
+    {
+      "path": "tests/reservation-backup-github-app.test.ts",
+      "sourceSha256": "d8a3c4fbf41575ddccd28b11f4db0398d88f712a1dc99080213adcd433ccd93c",
+      "sameContentIgnoringLineEndings": false
+    },
+    {
+      "path": "tests/reservation-backup-alert.test.ts",
+      "sourceSha256": "e269e7c1dc56dc602a8e9cd362752a22030d05934527855199f644cb7788d497",
+      "sameContentIgnoringLineEndings": false
+    },
+    {
+      "path": "tests/scheduled-invocation.test.ts",
+      "sourceSha256": "191a6e55ddc283d637c19d8e22daf15d9f6098092c51ed6c4a4f252e8633d879",
+      "sameContentIgnoringLineEndings": true
+    },
+    {
+      "path": "ops/reservation-backup-monitor/install.sql",
+      "sourceSha256": "b734f5bb6f6331f93387eedcfa7e8fc3811149195b5976e63a374a16e1770042",
+      "sameContentIgnoringLineEndings": true
+    },
+    {
+      "path": ".github/workflows/reservation-backup.yml",
+      "sourceSha256": "8b4715de387402ddbe395a9b87be186c7d75df2ad210fce19bdb45d04628d66e",
+      "sameContentIgnoringLineEndings": false
+    }
+  ],
+  "sourceSha256Basis": "SHA-256 of exact Git blob bytes from sourceCommit:path; no checkout or line-ending conversion",
+  "contentComparisonBasis": "UTF-8 decoded source blob and destination working file, with CRLF normalized to LF only"
+}

@@ -1,0 +1,13 @@
+node_modules/
+dist/
+coverage/
+.env
+.env.*
+*.pem
+*.key
+*.dpapi
+*.rms
+*.log
+*.sql.dump
+.supabase/
+supabase/.temp/
