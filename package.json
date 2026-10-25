@@ -1,0 +1,24 @@
+{
+  "name": "castle-reservation-backup",
+  "version": "0.1.0",
+  "private": true,
+  "description": "CASTLE THE ART 예약 자료 전용 암호화 백업과 실행 감시",
+  "type": "module",
+  "engines": { "node": ">=22.0.0" },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "build": "tsc -p tsconfig.build.json",
+    "secrets:check": "node scripts/check-secrets.mjs",
+    "edge:check": "node scripts/check-edge.mjs",
+    "ci:quality": "npm run secrets:check && npm run typecheck && npm test && npm run build",
+    "backup:reservations": "tsx scripts/reservation-backup.ts"
+  },
+  "dependencies": { "tsx": "4.23.12", "zod": "4.6.6" },
+  "devDependencies": {
+    "@types/node": "24.10.2",
+    "typescript": "7.0.2",
+    "vitest": "4.1.12"
+  },
+  "overrides": { "vite": "8.2.4", "source-map-js": "1.2.2" }
+}

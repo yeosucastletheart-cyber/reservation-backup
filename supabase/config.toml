@@ -1,0 +1,5 @@
+project_id = "castle-reservation-backup"
+
+[functions.reservation-backup-monitor]
+# The handler requires a purpose-bound HMAC; no service-role credential in HTTP headers.
+verify_jwt = false
