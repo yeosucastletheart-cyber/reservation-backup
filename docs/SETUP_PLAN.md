@@ -18,7 +18,9 @@
 앱 권한은 단일 저장소의 Issues read/write와 Metadata read-only입니다.
 코드 게시·저장소 관리 권한을 이 알림 앱에 추가하지 않습니다.
 
-## 실행 전 단계
+## 설정·전환 절차
+
+아래는 초기 비활성 설정부터 활성화까지의 순서입니다. 실제 완료 근거와 남은 항목은 문서 하단에 기록합니다.
 
 1. 추출 코드의 전체 합성 테스트·타입·빌드·Edge 검사와 독립 QA를 완료합니다.
 2. 캐슬디아트 계정의 코드 게시 권한으로 작업 브랜치에서 PR을 만들고 CI·독립 리뷰를 확인합니다.
@@ -44,17 +46,29 @@
 동시에 두 저장소의 정기 실행을 켜지 않습니다. 장애 시 신규 backup 변수·monitor 변수·해당 Cron만
 비활성화하고 이전 성공 사본을 보존합니다.
 
-## 현재 진행
+## 실행 근거 — 2026-10-25
 
-2026-10-25: 저장소/App 생성, 단일 저장소 설치와 캐슬디아트 GitHub CLI 인증을 완료했습니다.
-main/dev에 PR·strict application CI·관리자 적용·대화 해결·force/delete 금지를 설정했습니다.
-코드 분리와 독립 QA(123 Node 테스트·2 Deno 테스트)는 PASS입니다.
+- 코드 승격: [PR #5](https://github.com/yeosucastletheart-cyber/reservation-backup/pull/5),
+  main `a868e21`, application CI [40168464263](https://github.com/yeosucastletheart-cyber/reservation-backup/actions/runs/40168464263) PASS.
+  구현의 기존 123 Node·2 Deno 테스트와 독립 QA 근거는 동일합니다.
+- 보호·인증: main/dev의 PR·strict application·관리자 적용·대화 해결·force/delete 금지를 유지합니다.
+  App 키 지문·실제 설치 토큰의 단일 저장소 이름/ID·최소 권한 검증, DPAPI와 현재 Windows 사용자 전용 ACL 확인은 PASS입니다.
+  main 전용 환경은 관리자 우회 불가이며 Secrets 3개와 공개 CA를 등록했고 기존 암호화 키를 유지했습니다.
+- 복구 설치: 승인된 SQL(`b734` 식별 접두사)을 **2026-10-25T06:15:38Z에 1회** 복구 프로젝트에만 적용했습니다.
+  Cron job 1은 매시 17분이며 invoker가 비공개인 것을 확인했습니다. 운영 업무 DB migration·reset·전체 복원은 실행하지 않았습니다.
+- 감시 배포: Edge v1(`bbc42854`), `signed-v1`, 감시 환경 설정 7개를 반영했습니다.
+  실제 인증 경계 검사 4건은 PASS입니다. 키 내용·인증 응답 원문은 기록하지 않습니다.
+- 실제 수동 백업: [40168691919](https://github.com/yeosucastletheart-cyber/reservation-backup/actions/runs/40168691919)가
+  main `a868e21`에서 성공했습니다. 검증 단계는 6초이며 2026-10-25 사본의 `verified-existing`, 예약 28건, 삭제 0건입니다.
+  **기존 사본 재조회·검증 성공**이며 새 업로드나 운영 DB 전체 복원 성공을 의미하지 않습니다.
+- 실제 알림: 감시 요청 1은 HTTP 503 `BACKUP_MISSING`과 봇 댓글 `6394310631`,
+  요청 2는 HTTP 200 `HEALTHY`와 봇 댓글 `6394329200`을 확인했습니다.
+  캐슬디아트 Chrome의 GitHub Notifications 알림함에서 두 알림의 실제 수신을 확인했습니다.
+- 활성화: 정상 상태와 실제 알림 확인 후 새 저장소의 백업 변수는 true(매일 03:00 KST),
+  기존 wrongstory 저장소의 백업 변수는 false, 복구 Cron job 1은 active=true로 설정했습니다.
 
-최초 다운로드 파일의 인증 불일치 이후 사용자가 새 키를 생성하고 정확한 저장 위치를 알려줬습니다.
-최신 등록 키와 공개 지문 일치, 실제 설치 토큰의 단일 저장소 이름·ID·최소 권한 검증을 완료했고
-Windows 계정 전용으로 보호 저장했습니다. 키 내용·인증 응답 원문은 출력하지 않았습니다.
+## 남은 확인
 
-main 전용 환경은 관리자 우회 불가로 확인했으며 기존 운영 연결·암호화 키·복구 Storage 키를
-환경 Secrets 3개와 공개 CA로 등록했습니다. 이전 암호화 키를 유지하고 백업 변수는 false입니다.
-기능 PR #3의 application CI(40167911730)는 문서 갱신 전 head eb86b1d에서 PASS입니다.
-복구 SQL·Edge 배포·실제 알림·새 저장소의 백업·정기 실행은 아직 미완료입니다.
+- 첫 실제 정기 백업과 감시 Cron 실행은 **PENDING**입니다. 다음 백업 예정은 2026-10-26 03:00 KST이며
+  실제 실행·사본 상태를 확인할 때까지 [이슈 #1](https://github.com/yeosucastletheart-cyber/reservation-backup/issues/1)을 열어 둡니다.
+- 현장 PC 설치·로그인·인증정보 인계는 [후속 #6](https://github.com/yeosucastletheart-cyber/reservation-backup/issues/6)으로 관리하며 아직 완료하지 않았습니다.
