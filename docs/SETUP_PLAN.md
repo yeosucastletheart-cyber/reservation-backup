@@ -67,8 +67,27 @@
 - 활성화: 정상 상태와 실제 알림 확인 후 새 저장소의 백업 변수는 true(매일 03:00 KST),
   기존 wrongstory 저장소의 백업 변수는 false, 복구 Cron job 1은 active=true로 설정했습니다.
 
-## 남은 확인
+## 첫 정기 실행 검증 — 2026-10-27 확인
 
-- 첫 실제 정기 백업과 감시 Cron 실행은 **PENDING**입니다. 다음 백업 예정은 2026-10-26 03:00 KST이며
-  실제 실행·사본 상태를 확인할 때까지 [이슈 #1](https://github.com/yeosucastletheart-cyber/reservation-backup/issues/1)을 열어 둡니다.
+- [schedule run 40220823907](https://github.com/yeosucastletheart-cyber/reservation-backup/actions/runs/40220823907),
+  main `b945e6d`, 2026-10-26 03:21:03 KST 시작·03:21:24 종료, backup job과 실제 검증 step PASS.
+  검증 step은 7초이며 `verified-new`, 날짜 2026-10-26, 예약 28건, 삭제 0건입니다.
+- recovery 비공개 bucket에서 2026-10-26 사본 65,926 bytes와 이전 2026-10-25 사본 65,927 bytes의
+  보존을 읽기 전용으로 확인했습니다. 실제 예약 내용·키는 조회 결과나 문서에 포함하지 않았습니다.
+- 첫 정기 감시는 2026-10-25 16:17 KST job1/run1과 request3 HTTP200 `HEALTHY`로 확인했습니다.
+  첫 정기 백업 이후에도 2026-10-27 03:17 KST job1/run36 succeeded와 같은 시각 request38
+  HTTP200 `HEALTHY`, timeout/error 없음으로 확인했습니다. Cron 성공만으로 HTTP 성공을 추정하지 않았습니다.
+- 알림 #4의 `HEALTHY:2026-10-25:40168691919:1` 표시는 마지막 상태 전환 기록입니다.
+  연속 정상은 중복 알림을 막기 위해 날짜·실행 번호도 갱신하지 않는 계약이므로 최신 백업 근거는
+  위 schedule run의 검증 step·안전한 결과 요약·사본 날짜·감시 HTTP 응답을 함께 사용합니다.
+- 03:00 예정 대비 첫 실행은 21분 지연됐으며 04:00 미실행 판정 기한 안에 성공했습니다.
+  이후 실행의 영구 성공을 보장하지 않으며 실제 백업·감시는 계속 활성화합니다.
+
+## 완료 범위와 후속
+
+- 예약 전용 자동 백업의 첫 정기 신규 저장·재조회 및 실제 정기 감시 검증은 PASS입니다.
+  [이슈 #1](https://github.com/yeosucastletheart-cyber/reservation-backup/issues/1)과 backend #12/#273은 이 범위의 완료 근거로 정리합니다.
+- 15일 보존·이전 성공본 보호는 합성 QA와 현재 사본 보존으로 확인했습니다. 이번 삭제는 0건이며
+  실제 만료 삭제나 운영 DB 전체 복원을 실행한 것으로 표시하지 않습니다.
+- 첫 실행 확인용 Codex 자동화는 완료 정리 후 종료합니다. GitHub 정기 백업과 recovery 감시는 유지합니다.
 - 현장 PC 설치·로그인·인증정보 인계는 [후속 #6](https://github.com/yeosucastletheart-cyber/reservation-backup/issues/6)으로 관리하며 아직 완료하지 않았습니다.

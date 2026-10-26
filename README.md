@@ -9,17 +9,17 @@ Secrets 또는 복구 Supabase Secrets에만 등록합니다.
 
 ## 현재 상태
 
-2026-10-25: [PR #5](https://github.com/yeosucastletheart-cyber/reservation-backup/pull/5)로
-v0.1.0 코드를 main `a868e21`에 반영했습니다. 새 저장소의
-[수동 실행](https://github.com/yeosucastletheart-cyber/reservation-backup/actions/runs/40168691919)은
-당일 기존 암호화 사본의 예약 28건을 재조회·검증했습니다(`verified-existing`, 삭제 0건).
-새 사본 업로드나 운영 DB 전체 복원을 완료했다는 뜻은 아닙니다.
+2026-10-27 확인: [첫 정기 실행](https://github.com/yeosucastletheart-cyber/reservation-backup/actions/runs/40220823907)이
+2026-10-26 03:21 KST에 main `b945e6d`에서 성공했습니다. 10월 26일 예약 28건을 새 암호화 사본으로
+저장하고 재조회·복호화·예약 참조 검증을 통과했습니다(`verified-new`, 삭제 0건).
+사본은 65,926 bytes이며 10월 25일 성공본도 보존했습니다. 운영 DB 전체 복원을 의미하지 않습니다.
 
 실제 미실행·정상 복구 알림을 캐슬디아트 GitHub 알림함에서 확인한 뒤 새 저장소의 매일 03:00 KST
 백업과 복구 감시를 활성화했습니다. 기존 wrongstory 저장소의 백업은 비활성입니다.
-첫 정기 백업·감시 실행은 아직 확인 전이며
-[이슈 #1](https://github.com/yeosucastletheart-cyber/reservation-backup/issues/1)을 유지합니다.
-다음 백업 예정은 2026-10-26 03:00 KST입니다. 현장 PC 설치·인계는 [별도 후속 #6](https://github.com/yeosucastletheart-cyber/reservation-backup/issues/6)입니다.
+첫 정기 백업과 실제 정기 감시 검증을 완료했습니다. 정상 상태가 계속되면 알림 이슈의 마지막
+전환 날짜는 갱신하지 않으므로 최신 성공 날짜는 Actions와 사본 날짜를 함께 확인합니다.
+완료 근거는 [이슈 #1](https://github.com/yeosucastletheart-cyber/reservation-backup/issues/1),
+현장 PC 설치·인계는 [별도 후속 #6](https://github.com/yeosucastletheart-cyber/reservation-backup/issues/6)에서 관리합니다.
 상세 근거와 남은 단계는 [설정 기록](docs/SETUP_PLAN.md)을 확인하세요.
 
 ## 동작
